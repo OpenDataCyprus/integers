@@ -1,4 +1,4 @@
-package com.integers.ofs.repositories;
+package com.integers.ofs.repositories.impl;
 
 import java.util.List;
 
@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.integers.ofs.domain.model.Restaurant;
+import com.integers.ofs.domain.Restaurant;
+import com.integers.ofs.repositories.RestaurantRepository;
 
 @Repository
 public class RestaurantRepositoryImpl implements RestaurantRepository
@@ -28,12 +29,10 @@ public class RestaurantRepositoryImpl implements RestaurantRepository
 
 	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Restaurant> list()
 	{
-		@SuppressWarnings("unchecked")
-		List<Restaurant> restaurantList = (List<Restaurant>) sessionFactory.getCurrentSession().createCriteria(Restaurant.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-
-		return restaurantList;
+		return (List<Restaurant>) sessionFactory.getCurrentSession().createCriteria(Restaurant.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 
 	@Override

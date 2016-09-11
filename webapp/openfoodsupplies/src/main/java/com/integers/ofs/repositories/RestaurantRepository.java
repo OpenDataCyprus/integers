@@ -2,7 +2,7 @@ package com.integers.ofs.repositories;
 
 import java.util.List;
 
-import com.integers.ofs.domain.model.Restaurant;
+import com.integers.ofs.domain.Restaurant;
 
 public interface RestaurantRepository
 {

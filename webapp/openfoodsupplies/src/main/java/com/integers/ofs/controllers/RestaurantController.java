@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.integers.ofs.domain.model.Restaurant;
+import com.integers.ofs.domain.Restaurant;
 import com.integers.ofs.repositories.RestaurantRepository;
 
 @Controller
+@RequestMapping("/restaurant")
 public class RestaurantController
 {
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 
-	@RequestMapping("/")
-	public ModelAndView handleRequest() throws Exception
+	@RequestMapping("")
+	public ModelAndView list() throws Exception
 	{
 		List<Restaurant> restaurantList = restaurantRepository.list();
 		ModelAndView model = new ModelAndView("RestaurantList");
